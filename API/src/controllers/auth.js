@@ -17,12 +17,12 @@ export let CheckAuth = (ctx) => {
   try {
     let decoded = jwt.verify(token.substr(7), publicKey)
     if (decoded.userInfo) {
-      ctx.body =  {
+      return   {
         status: 1,
         result: decoded.userInfo
       }
     } else {
-      ctx.body =  {
+      return   {
         status: 403,
         result: {
           errInfo: '没有授权'
@@ -30,7 +30,7 @@ export let CheckAuth = (ctx) => {
       }
     }
   } catch (err) {
-    ctx.body = {
+    return  {
       status: 503,
       result: {
         errInfo: '解密错误'
@@ -40,10 +40,11 @@ export let CheckAuth = (ctx) => {
 }
 
 export let Post = (ctx) => {
+  console.log(`aa`)
   switch (ctx.params.action) {
     case 'check':
-      return CheckAuth(ctx)
+      return CheckAuth(ctx).then(result => { ctx.body = result })
     default:
-      return CheckAuth(ctx)
+      return CheckAuth(ctx).then(result => { ctx.body = result })
   }
 }

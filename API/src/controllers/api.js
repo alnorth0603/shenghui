@@ -1,9 +1,29 @@
-export let Get = (ctx) => {
+
+import * as getUser from './../services/login.js'
+
+export let Get = async (ctx) => {
+  await getUser.GetAdminById().then((reuslt)=>{
+    ctx.body = {
+      result: 'getaaa',
+      name: ctx.params.name,
+      para: ctx.query,
+      data:reuslt
+    }
+  })
+   /*await Admin.findOne({'where':{'id':'1'}}).then(function(admin){
+    ctx.body = {
+      result: 'get',
+      name: ctx.params.name,
+      para: ctx.query,
+      data:admin
+    }
+});
   ctx.body = {
     result: 'get',
     name: ctx.params.name,
-    para: ctx.query
-  }
+    para: ctx.query,
+    data:''+adminInfo
+  }*/
 }
 
 export let Post = async (ctx) => {
