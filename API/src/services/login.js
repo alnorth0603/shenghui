@@ -5,6 +5,8 @@ export let GetAdminById =()=>{
   return new Promise((resolve, reject)=>{
     Admin.findOne({'where':{'id':'1'}}).then((admin)=>{
         resolve(admin);
+    }).catch((Errors)=>{
+      reject(Errors);
     });
   })
 }

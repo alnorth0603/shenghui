@@ -10,6 +10,14 @@ export default new Sequelize(DBConfig.database, DBConfig.username, DBConfig.pass
     supportBigNumbers: true,
     bigNumberStrings: true
   },
+  define: {
+      underscored: true,
+      timestamps: true,
+      paranoid: true,
+      createdAt:'create_date',
+      updatedAt:'update_date',
+      deletedAt:'delete_date'
+  },
   pool: {
     max: 50,
     min: 0,

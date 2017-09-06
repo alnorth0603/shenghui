@@ -1,29 +1,23 @@
 
 import * as getUser from './../services/login.js'
+//import * as dbModels from './../services/syncDB.js'
 
 export let Get = async (ctx) => {
-  await getUser.GetAdminById().then((reuslt)=>{
+   await getUser.GetAdminById().then((reuslt)=>{
     ctx.body = {
       result: 'getaaa',
       name: ctx.params.name,
       para: ctx.query,
       data:reuslt
     }
-  })
-   /*await Admin.findOne({'where':{'id':'1'}}).then(function(admin){
+  }).catch((Errors)=>{
     ctx.body = {
-      result: 'get',
+      result: 'getaaa',
       name: ctx.params.name,
       para: ctx.query,
-      data:admin
+      data:Errors.parent
     }
-});
-  ctx.body = {
-    result: 'get',
-    name: ctx.params.name,
-    para: ctx.query,
-    data:''+adminInfo
-  }*/
+  })
 }
 
 export let Post = async (ctx) => {
