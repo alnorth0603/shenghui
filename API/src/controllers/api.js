@@ -1,23 +1,9 @@
 
-import * as getUser from './../services/login.js'
-//import * as dbModels from './../services/syncDB.js'
-
 export let Get = async (ctx) => {
-   await getUser.GetAdminById().then((reuslt)=>{
-    ctx.body = {
-      result: 'getaaa',
-      name: ctx.params.name,
-      para: ctx.query,
-      data:reuslt
-    }
-  }).catch((Errors)=>{
-    ctx.body = {
-      result: 'getaaa',
-      name: ctx.params.name,
-      para: ctx.query,
-      data:Errors.parent
-    }
-  })
+  ctx.body = {
+    result: 'get',
+    name: ctx.params.name
+  }
 }
 
 export let Post = async (ctx) => {

@@ -36,14 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlphanumeric: true,
-        len: [6, 10]
+        isAlphanumeric: true
       },
-      comment: '用户密码'
-    },
-    notic: {
-      type: DataTypes.STRING,
-      allowNull: true,
       comment: '用户密码'
     },
     login_flag: {
